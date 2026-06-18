@@ -10,7 +10,10 @@ A web application was built using **Streamlit** so that any user can check ad re
 ---
 
 ## Live Demo
-Check out the live app deployed on Render here: [https://content-monetization-modeler-bnj0.onrender.com]
+Check out the live app deployed on Render here: (Launch)[https://content-monetization-modeler-bnj0.onrender.com]
+*(Note: If the application has been idle, it may take about 1 minute to wake up on the free tier hosting environment).*
+
+
 
 ---
 
