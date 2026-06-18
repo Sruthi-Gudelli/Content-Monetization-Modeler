@@ -7,36 +7,36 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, root_mean_squared_error, r2_score
 
-data_cleaned = pd.read_csv('D:/VSCODE/Project_YT_Model/youtube_revenue_cleaned.csv')
+data_cleaned = pd.read_csv('youtube_revenue_cleaned.csv')
 data_cleaned.drop('Unnamed: 0', axis=1, inplace=True)
 X = data_cleaned.drop(['ad_revenue_usd'], axis=1)
 y = data_cleaned['ad_revenue_usd']
 X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2, random_state=42)
 
-with open("C:/Users/HP/OneDrive/Desktop/GUVI-DS PROJECT REPORTS/youtube_data_scaling.pkl", 'rb') as f:
+with open("youtube_data_scaling.pkl", 'rb') as f:
     scaler = pickle.load(f)
 
 X_train_scaled = scaler.transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-with open("C:/Users/HP/OneDrive/Desktop/GUVI-DS PROJECT REPORTS/youtube_revenue_model.pkl", 'rb') as f:
+with open("youtube_revenue_model.pkl", 'rb') as f:
     li_model = pickle.load(f)
 
-with open("C:/Users/HP/OneDrive/Desktop/GUVI-DS PROJECT REPORTS/youtube_revenue_model_dt.pkl", 'rb') as f:
+with open("youtube_revenue_model_dt.pkl", 'rb') as f:
     dt_model = pickle.load(f)
 
-RF_model = joblib.load('C:/Users/HP/OneDrive/Desktop/GUVI-DS PROJECT REPORTS/youtube_revenue_model_RF.pkl')
+RF_model = joblib.load('youtube_revenue_model_RF.pkl')
 
-with open("C:/Users/HP/OneDrive/Desktop/GUVI-DS PROJECT REPORTS/youtube_revenue_model_GB.pkl", 'rb') as f:
+with open("youtube_revenue_model_GB.pkl", 'rb') as f:
     GB_model = pickle.load(f)
 
-with open("C:/Users/HP/OneDrive/Desktop/GUVI-DS PROJECT REPORTS/youtube_revenue_model_XGB.pkl", 'rb') as f:
+with open("youtube_revenue_model_XGB.pkl", 'rb') as f:
     XGB_model = pickle.load(f)
 
 
 def home_page():
     st.title("Content Monetization Modeler")
-    st.image('C:/Users/HP/OneDrive/Desktop/GUVI-DS PROJECT REPORTS/content_monetization_image.jpg')
+    st.image('content_monetization_image.jpg')
     st.write("\n As creators and media companies depend more heavily on YouTube for steady income, understanding ad revenue becomes a strategic necessity. Accurate revenue predictions help teams plan budgets, allocate resources, and decide which content formats are most profitable. They also guide upload frequency, audience targeting, and long term growth strategies. In a competitive digital landscape, forecasting earnings isn't optional anymore, it's a core part of sustainable content planning.")
     st.write("So to predict YouTube ad revenue for individual videos and understand which is the driving feature for revenue, 5 regression models were trained. In that one model which is more accurate was choosed for prediction. ")
     st.write("The detailed comparision of 5 models is given in 'Models Comparision' page")
